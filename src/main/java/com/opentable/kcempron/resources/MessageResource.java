@@ -5,6 +5,8 @@ import com.opentable.kcempron.service.MessageService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 @Path("/messages")
@@ -15,18 +17,18 @@ public class MessageResource {
     MessageService messageService = new MessageService();
 
     @GET
-    public List<Message> getMessages() {
+    public List<Message> getMessages(@QueryParam("year") int year,
+                                     @QueryParam("start") int start,
+                                     @QueryParam("size") int size) {
+        if (year > 0) {
+            return messageService.getAllMessagesForYear(year);
+        }
+
+        if (start >= 0 && size > 0) {
+            return messageService.getAllMessagesPaginated(start, size);
+        }
+
         return messageService.getAllMessages();
-    }
-
-    public List<Message> getAllMessagesForYear(int year) {
-        //TODO
-        return null;
-    }
-
-    public List<Message> getAllMessagesPaginated(int start, int size) {
-        //TODO
-        return null;
     }
 
     @GET
