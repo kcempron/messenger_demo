@@ -19,6 +19,16 @@ public class MessageResource {
         return messageService.getAllMessages();
     }
 
+    public List<Message> getAllMessagesForYear(int year) {
+        //TODO
+        return null;
+    }
+
+    public List<Message> getAllMessagesPaginated(int start, int size) {
+        //TODO
+        return null;
+    }
+
     @GET
     @Path("/{messageId}")
     public Message test(@PathParam("messageId") long messageId) {
