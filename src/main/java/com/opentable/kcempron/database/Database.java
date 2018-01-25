@@ -11,10 +11,15 @@ public class Database {
     private static Map<Long, Message> messages = new HashMap<>();
     private static Map<Long, Profile> profiles = new HashMap<>();
 
+    static {
+        messages.put(1L, new Message(1, "Hello World", "kcempron"));
+        messages.put(2L, new Message(2, "Hello OpenTable", "kcempron"));
+    }
+
     public static Map<Long, Message> getMessages() {
         return messages;
     }
-    
+
     public static Map<Long, Profile> getProfiles() {
         return profiles;
     }
